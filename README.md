@@ -2,6 +2,7 @@
 
 ## vue 全家桶
 
+``` bash
 npm install -g vue-cli
 
 vue init webpack [vue-demo]
@@ -11,6 +12,9 @@ cd [vue-demo] & yarn
 yarn add -D node-sass sass-loader
 
 yarn add babel-polyfill vuex isomorphic-fetch query-string js-cookie
+
+yarn start
+```
 
 ### babel-polyfill 配置
 
@@ -35,12 +39,14 @@ module.exports = {
 
 在 src/ 下新建 router 目录
 
+``` bash
 ├── router
 │   ├── home
 │   │   └── index.vue
 │   ├── todo
 │   │   └── index.vue
 │   ├── index.js
+```
 
 在 src/router/index.js 配置路由
 
@@ -120,11 +126,13 @@ new Vue({
 
 在 src/ 下新建 store 目录
 
+``` bash
 ├── store
 │   ├── actions 行为
 │   ├── mutations 变化
 │   ├── state 状态
 │   ├── index.js 入口
+```
 
 在 src/main.js 引用
 
@@ -193,9 +201,11 @@ export default {
 
 在 src/ 下新建 fetch 目录
 
+``` bash
 ├── fetch
 │   ├── config
 │   ├── index.js
+```
 
 在 store/actions/index.js 中示范
 
@@ -219,8 +229,10 @@ Vue.use(install)
 
 在 src/ 下新建 plugins 目录
 
+``` bash
 ├── plugins
 │   ├── index.js
+```
 
 ``` JavaScript
 import jsCookie from 'js-cookie'
@@ -239,3 +251,15 @@ Vue.use(plugins)
 ```
 
 在 src/router/components/Hello.vue 中示范
+
+## react 全家桶
+
+npm install -g create-react-app
+
+create-react-app [react-demo]
+
+cd [react-demo] & yarn start
+
+脚手架为了"优雅"，隐藏了所有的 webpack 相关的配置文件。执行以下命令：
+
+npm run eject
