@@ -3,6 +3,14 @@
 module.exports = {
   "plugins": {
     // to edit target browsers: use "browserslist" field in package.json
-    "autoprefixer": {}
+    "autoprefixer": {
+      browsers: [
+        '>1%',
+        'last 4 versions',
+        'Firefox ESR',
+        'not ie < 9' // Vue doesn't support IE8 anyway
+      ],
+      flexbox: 'no-2009'
+    }
   }
 }

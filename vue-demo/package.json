@@ -95,7 +95,8 @@
   },
   "browserslist": [
     "> 1%",
-    "last 2 versions",
-    "not ie <= 8"
+    "last 4 versions",
+    "Firefox ESR",
+    "not ie < 9"
   ]
 }

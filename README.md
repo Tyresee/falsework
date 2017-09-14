@@ -167,7 +167,7 @@ export default {
 
 ### sass/scss 环境
 
-依赖 node-sass sass-loader
+yarn add node-sass sass-loader
 
 在 src/router/components/Hello.vue 中示范
 
@@ -252,6 +252,12 @@ Vue.use(plugins)
 
 在 src/router/components/Hello.vue 中示范
 
+### 其他配置
+
+build/
+
+config/
+
 ## react 全家桶
 
 npm install -g create-react-app
@@ -263,3 +269,40 @@ cd [react-demo] & yarn start
 脚手架为了"优雅"，隐藏了所有的 webpack 相关的配置文件。执行以下命令：
 
 npm run eject
+
+当然如果项目有 git 版本控制，必须先提交备份
+
+``` bash
+├── config
+├── public
+├── scripts
+├── src
+```
+
+可以在 config/ 以及 scripts/ 修改配置
+
+### ES6 的支持
+
+config/polyfills.js 中表示
+
+the project only includes a few ES6 polyfills:
+
+* Object.assign() via object-assign.
+
+* Promise via promise.
+
+* fetch() via whatwg-fetch.
+
+只包含了这三种，如果还需要其他的，需要另外引入，如 babel-polyfill
+
+``` JavaScript
+entry: [
+  require('babel-polyfill')
+]
+```
+
+### sass/scss 环境
+
+在 config/webpack.config.dev.js 和 config/webpack.config.prod.js 中
+
+yarn add node-sass sass-loader
