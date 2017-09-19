@@ -1,23 +1,38 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
+    <div class="logo">
+      <img :src="src">
+    </div>
     <router-view></router-view>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'app'
+  name: 'app',
+  data () {
+    return {
+      src: require('@/assets/img/logo.png')
+    }
+  }
 }
 </script>
 
-<style>
+<style lang="scss">
+@import './assets/css/rem';
+
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  width: rem(750);
+  margin: 0 auto;
+
+  .logo {
+    padding: rem(20) 0;
+    text-align: center;
+
+    img {
+      width: rem(200);
+      height: rem(200);
+    }
+  }
 }
 </style>

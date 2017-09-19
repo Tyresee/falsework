@@ -1,19 +1,43 @@
-<template lang="html">
+<template>
   <div class="home">
-    <Hello />
+    <search />
+    <songs />
+    <song :song="song" v-if="$route.hash && song.songmid" />
   </div>
 </template>
 
 <script>
-import Hello from '@/components/Hello'
+import { mapState } from 'vuex'
+
+import search from '@/components/search'
+import songs from '@/components/songs'
+import song from '@/components/song'
 
 export default {
   name: 'home',
   components: {
-    Hello
+    search,
+    songs,
+    song
+  },
+  computed: {
+    ...mapState(['song']),
+  },
+  watch: {
+    $route ($route) {
+      if ($route.hash) {
+        document.body.style.overflow = 'hidden'
+      } else {
+        document.body.style.overflow = ''
+      }
+    }
+  },
+  mounted () {
+    if (!this.song.songmid) {
+      this.$router.push({
+        hash: ''
+      })
+    }
   }
 }
 </script>
-
-<style lang="css">
-</style>

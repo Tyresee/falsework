@@ -1,0 +1,23 @@
+@font-face {
+    font-family: 'iconfont';
+    src: url('../font/iconfont.eot?t=1491903330819');
+    src: url('../font/iconfont.eot?t=1491903330819#iefix') format('embedded-opentype'), url('../font/iconfont.woff?t=1491903330819') format('woff'), url('../font/iconfont.ttf?t=1491903330819') format('truetype'), url('../font/iconfont.svg?t=1491903330819#iconfont') format('svg');
+}
+
+.iconfont {
+    font-family: 'iconfont';
+}
+
+.icon-pause:before { content: '\e66a'; }
+
+.icon-download:before { content: '\e6a3'; }
+
+.icon-close:before { content: '\e61b'; }
+
+.icon-clockoutline:before { content: '\e656'; }
+
+.icon-sousuo:before { content: '\e659'; }
+
+.icon-x:before { content: '\e65d'; }
+
+.icon-play:before { content: '\e60e'; }

@@ -1,4 +1,6 @@
 export default {
   number: 0,
-  cms: {}
+  cms: {},
+  search: {},
+  song: {}
 }

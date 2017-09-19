@@ -258,6 +258,8 @@ build/
 
 config/
 
+修改端口号；修改输入共同目录；修改是否生成 .map；是否采取 Gzip 等。
+
 ## react 全家桶
 
 npm install -g create-react-app
