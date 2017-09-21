@@ -1,2 +1,6 @@
-build/*.js
-config/*.js
+# build
+/build/*.js
+/config/*.js
+
+# dependencies
+node_modules

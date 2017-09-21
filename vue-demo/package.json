@@ -2,8 +2,18 @@
   "name": "vue-demo",
   "version": "1.0.0",
   "description": "A Vue.js project",
+  "keywords": "rproduct",
   "author": "RainJoy <1490079545@qq.com>",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "bugs": {
+    "url": "",
+    "email": "1490079545@qq.com"
+  },
+  "homepage": "",
   "scripts": {
     "dev": "node build/dev-server.js",
     "start": "node build/dev-server.js",
@@ -11,7 +21,7 @@
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
     "e2e": "node test/e2e/runner.js",
     "test": "npm run unit && npm run e2e",
-    "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs"
+    "lint": "eslint --ext .js,.vue src test"
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
@@ -80,6 +90,8 @@
     "shelljs": "^0.7.6",
     "sinon": "^2.1.0",
     "sinon-chai": "^2.8.0",
+    "ts-loader": "^2.3.7",
+    "typescript": "^2.5.2",
     "url-loader": "^0.5.8",
     "vue-loader": "^13.0.4",
     "vue-style-loader": "^3.0.1",
@@ -96,8 +108,9 @@
   },
   "browserslist": [
     "> 1%",
-    "last 4 versions",
-    "Firefox ESR",
-    "not ie < 9"
+    "last 3 versions",
+    "ios >= 8",
+    "android >= 4",
+    "ie > 8"
   ]
 }

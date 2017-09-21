@@ -6,32 +6,28 @@
 
 ``` bash
 # install dependencies
-npm install
+yarn
 
 # serve with hot reload at localhost:8080
-npm run dev
+yarn dev
 
 # build for production with minification
-npm run build
+yarn build
 
 # build for production and view the bundle analyzer report
-npm run build --report
+yarn build --report
 
-# run unit tests
-npm run unit
-
-# run e2e tests
-npm run e2e
-
-# run all tests
-npm test
+# test
+yarn test
 ```
 
 ## Learn More
 
-[guide](http://vuejs-templates.github.io/webpack/)
-
-[docs for vue-loader](http://vuejs.github.io/vue-loader)
+* [vuejs-templates and webpack](http://vuejs-templates.github.io/webpack/)
+* [docs for vue](https://cn.vuejs.org/)
+* [docs for vue-loader](https://vue-loader.vuejs.org/zh-cn/)
+* [docs for vue-router](https://router.vuejs.org/zh-cn/)
+* [docs for vuex](https://vuex.vuejs.org/zh-cn/)
 
 # How to Build
 
@@ -287,10 +283,130 @@ Vue.use(plugins)
 
 在 src/router/components/Hello.vue 中示范
 
+### <base>
+
+<base href="">
+
+### .babelrc
+
+
+### editorconfig
+
+``` bash
+root = true
+
+[*]
+charset = utf-8
+indent_style = space
+indent_size = 4
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+```
+
+### .eslintignore
+
+``` bash
+node_modules
+```
+
+### .eslintrc
+
+``` JavaScript
+// http://eslint.org/docs/user-guide/configuring
+
+module.exports = {
+  root: true,
+  parser: 'babel-eslint',
+  parserOptions: {
+    sourceType: 'module'
+  },
+  env: {
+    browser: true,
+  },
+  // https://github.com/feross/standard/blob/master/RULES.md#javascript-standard-style
+  extends: 'standard',
+  // required to lint *.vue files
+  plugins: [
+    'html'
+  ],
+  // add your custom rules here
+  'rules': {
+    'indent': ['error', 4],
+    'no-new': 0
+    // ...
+  }
+}
+```
+
+### .gitignore
+
+``` bash
+# See https://help.github.com/ignore-files/ for more about ignoring files.
+
+# testing
+test/unit/coverage
+test/e2e/reports
+
+# production
+/dist
+
+# dependencies
+node_modules
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Editor directories and files
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+```
+
+### .postcssrc
+
+``` JavaScript
+// https://github.com/michael-ciniawsky/postcss-load-config
+// http://browserl.ist/?q=>+1%25&q=last+3+versions&q=ios+>=+8&q=android+>=+4&q=ie+>+8
+
+module.exports = {
+  "plugins": {
+    // to edit target browsers: use "browserslist" field in package.json
+    "autoprefixer": {
+        "browserslist": [
+          "> 1%",
+          "last 3 versions",
+          "iOS >= 8",
+          "android >= 4"
+        ]
+    }
+  }
+}
+```
+
+### .sass-lint.yml
+
+### package.json
+
 ### 其他配置
 
 build/
 
 config/
 
-修改端口号；修改输入共同目录；修改是否生成 .map；是否采取 Gzip 等。
+* 修改端口号
+* 修改输入共同目录
+* 修改是否生成 .map; 建议生产环境不生成
+* 是否采取 Gzip; 建议采取
+* 开发环境第一次启动是否自动打开页面，设置打开页面的地址
