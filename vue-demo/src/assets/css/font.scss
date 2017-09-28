@@ -1,11 +1,14 @@
 @font-face {
-    font-family: 'iconfont';
-    src: url('../font/iconfont.eot?t=1491903330819');
-    src: url('../font/iconfont.eot?t=1491903330819#iefix') format('embedded-opentype'), url('../font/iconfont.woff?t=1491903330819') format('woff'), url('../font/iconfont.ttf?t=1491903330819') format('truetype'), url('../font/iconfont.svg?t=1491903330819#iconfont') format('svg');
+  font-family: 'iconfont';
+  src: url('../font/iconfont.eot'); // IE9 Compat Modes
+  src: url('../font/iconfont.eot?t=1491903330819#iefix') format('embedded-opentype'), // IE6 - IE8
+  url('../font/iconfont.woff?t=1491903330819') format('woff'), // Modern Browsers
+  url('../font/iconfont.ttf?t=1491903330819') format('truetype'), // Safari, Ios, Android
+  url('../font/iconfont.svg?t=1491903330819#iconfont') format('svg'); // Ios
 }
 
 .iconfont {
-    font-family: 'iconfont';
+  font-family: 'iconfont';
 }
 
 .icon-pause:before { content: '\e66a'; }

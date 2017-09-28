@@ -1,14 +1,16 @@
 <template>
   <div class="todo">
-    todo
+    <hello />
   </div>
 </template>
 
 <script>
+import hello from '@/components/hello'
+
 export default {
-  name: 'todo'
+  name: 'todo',
+  components: {
+    hello
+  }
 }
 </script>
-
-<style lang="css">
-</style>

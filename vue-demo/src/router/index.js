@@ -22,7 +22,7 @@ const scrollBehavior = (to, from, savedPosition) => {
 export default new Router({
   mode: 'history', // 设置 history 模式
   scrollBehavior,
-  base: '/', // 设置 URL base
+  base: '/vue-demo', // 设置 URL base
   routes: [
     {
       path: '/',

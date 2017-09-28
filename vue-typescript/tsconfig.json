@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "lib": [
+      "dom",
+      "es2017",
+      "es2015.promise"
+    ],
+    "module": "es2015",
+    "moduleResolution": "node",
+    "target": "es5"
+  }
+}

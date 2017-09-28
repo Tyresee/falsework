@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { mapState, mapMutations, mapActions } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 
 export default {
   data () {
@@ -37,7 +37,6 @@ export default {
     }
   },
   methods: {
-    ...mapMutations(['setSong']),
     ...mapActions(['getSearch']),
     async scrollFun (state) {
       if (state !== 'bottom' || this.loading || this.curnum < 10 || !this.keyword.trim()) return
@@ -51,14 +50,12 @@ export default {
           this.loading = false
         })
       } catch (e) {
-        console.log(e)
+        this.$$toast('系统异常')
       }
     },
-    toSong (value) {
-      this.setSong(value)
-      this.$router.push({
-        hash: 'song'
-      })
+    toSong (song) {
+      window.localStorage['vue-demo-song'] = JSON.stringify(song)
+      this.$emit('input', song)
     }
   }
 }

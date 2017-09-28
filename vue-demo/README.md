@@ -51,7 +51,7 @@ yarn start
 
 build/webpack.base.conf.js
 
-``` JavaScript
+``` javascript
 module.exports = {
   entry: {
     app: './src/main.js'
@@ -81,7 +81,7 @@ module.exports = {
 
 在 src/router/index.js 配置路由
 
-``` JavaScript
+``` javascript
 import Vue from 'vue'
 import Router from 'vue-router'
 
@@ -127,7 +127,7 @@ export default new Router({
       }
     },
     {
-      path: '/todo/:id',
+      path: '/todo/',
       name: 'todo',
       component (resolve) {
         require.ensure([], () => {
@@ -141,7 +141,7 @@ export default new Router({
 
 在 src/main.js 引用
 
-``` JavaScript
+``` javascript
 import router from './router'
 
 new Vue({
@@ -162,12 +162,13 @@ new Vue({
 │   ├── actions 行为
 │   ├── mutations 变化
 │   ├── state 状态
+│   ├── api.js 汇总 api
 │   ├── index.js 入口
 ```
 
 在 src/main.js 引用
 
-``` JavaScript
+``` javascript
 import store from './store'
 
 new Vue({
@@ -181,9 +182,9 @@ new Vue({
 
 ### vuex 组件中使用
 
-在 src/router/components/Hello.vue 中示范
+在 src/router/components/hello.vue 中示范
 
-``` JavaScript
+``` javascript
 import { mapState, mapActions } from 'vuex'
 
 export default {
@@ -202,7 +203,7 @@ yarn add node-sass sass-loader
 
 在 src/router/components/Hello.vue 中示范
 
-``` HTML
+``` html
 <style lang="scss" scoped>
 .hello {
   h1 {
@@ -236,13 +237,15 @@ yarn add node-sass sass-loader
 ├── fetch
 │   ├── config
 │   ├── index.js
+│   ├── json.js
+│   ├── jsonp.js
 ```
 
 在 store/actions/index.js 中示范
 
 当然也可以作为在 src/main.js 中 Vue 实例上全局注册
 
-``` JavaScript
+``` javascript
 import Vue from 'vue'
 import fetch from '@/fetch'
 
@@ -265,7 +268,7 @@ Vue.use(install)
 │   ├── index.js
 ```
 
-``` JavaScript
+``` javascript
 import jsCookie from 'js-cookie'
 
 export default function install (Vue) {
@@ -275,7 +278,7 @@ export default function install (Vue) {
 
 在 src/main.js 中 Vue 实例上全局注册
 
-``` JavaScript
+``` javascript
 import plugins from './plugins'
 
 Vue.use(plugins)
@@ -289,6 +292,43 @@ Vue.use(plugins)
 
 ### .babelrc
 
+``` json
+{
+  "presets": [
+    [
+      "env",
+      {
+        "modules": false,
+        "targets": {
+          "browsers": [
+            "> 1%",
+            "last 3 versions",
+            "ios >= 8",
+            "android >= 4",
+            "ie > 8"
+          ]
+        }
+      }
+    ],
+    "stage-2"
+  ],
+  "plugins": [
+    "transform-runtime"
+  ],
+  "env": {
+    "test": {
+      "presets": [
+        "env",
+        "stage-2"
+      ],
+      "plugins": [
+        "istanbul"
+      ]
+    }
+  }
+}
+
+```
 
 ### editorconfig
 
@@ -298,7 +338,7 @@ root = true
 [*]
 charset = utf-8
 indent_style = space
-indent_size = 4
+indent_size = 2
 end_of_line = lf
 insert_final_newline = true
 trim_trailing_whitespace = true
@@ -307,12 +347,17 @@ trim_trailing_whitespace = true
 ### .eslintignore
 
 ``` bash
+# build
+/build/*.js
+/config/*.js
+
+# dependencies
 node_modules
 ```
 
 ### .eslintrc
 
-``` JavaScript
+``` javascript
 // http://eslint.org/docs/user-guide/configuring
 
 module.exports = {
@@ -345,11 +390,11 @@ module.exports = {
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
 # testing
-test/unit/coverage
-test/e2e/reports
+/test/e2e/reports
+/test/unit/coverage
 
 # production
-/dist
+# /dist
 
 # dependencies
 node_modules
@@ -361,7 +406,7 @@ node_modules
 .env.test.local
 .env.production.local
 
-# Editor directories and files
+# editor directories and files
 .idea
 *.suo
 *.ntvs*
@@ -376,7 +421,7 @@ yarn-error.log*
 
 ### .postcssrc
 
-``` JavaScript
+``` javascript
 // https://github.com/michael-ciniawsky/postcss-load-config
 // http://browserl.ist/?q=>+1%25&q=last+3+versions&q=ios+>=+8&q=android+>=+4&q=ie+>+8
 
@@ -384,12 +429,13 @@ module.exports = {
   "plugins": {
     // to edit target browsers: use "browserslist" field in package.json
     "autoprefixer": {
-        "browserslist": [
-          "> 1%",
-          "last 3 versions",
-          "iOS >= 8",
-          "android >= 4"
-        ]
+      "browserslist": [
+        "> 1%",
+        "last 3 versions",
+        "ios >= 8",
+        "android >= 4",
+        "ie > 8"
+      ]
     }
   }
 }

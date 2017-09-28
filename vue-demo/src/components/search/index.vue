@@ -3,8 +3,8 @@
     <div class="vue-search-wrapper">
       <div class="search-content">
         <i class="iconfont icon-sousuo"></i>
-        <input class="input" placeholder="搜索歌曲、歌单、专辑" v-model="w" @keyup.enter="submit(w)" @focus="focus">
-        <i class="iconfont icon-x" v-show="w.length" @click="clear"></i>
+        <input class="input" placeholder="搜索歌曲、歌单、专辑" v-model="keyword" @keyup.enter="submit(keyword)" @focus="focus">
+        <i class="iconfont icon-x" v-show="keyword.length" @click="clear"></i>
       </div>
       <div class="search-cancel" v-show="visible" @click="cancel">取消</div>
     </div>
@@ -21,32 +21,32 @@ import { mapActions } from 'vuex'
 export default {
   data () {
     return {
-      w: '',
+      keyword: '',
       visible: false,
       records: null
     }
   },
   methods: {
     ...mapActions(['getSearch']),
-    async submit (w) {
+    async submit (keyword) {
       try {
-        if (!w.trim()) return
+        if (!keyword.trim()) return
         const search = window.localStorage['vue-demo-search']
         if (search) {
           const arr = search.split(',')
-          arr.push(w)
+          arr.push(keyword)
           window.localStorage['vue-demo-search'] = [...new Set(arr)].join(',')
         } else {
-          window.localStorage['vue-demo-search'] = w
+          window.localStorage['vue-demo-search'] = keyword
         }
         await this.getSearch({
-          w,
+          w: keyword,
           p: 1
         })
-        this.w = w
+        this.keyword = keyword
         this.visible = false
       } catch (e) {
-        console.log(e)
+        this.$$toast('系统异常')
       }
     },
     focus () {
@@ -55,10 +55,10 @@ export default {
       this.visible = true
     },
     clear () {
-      this.w = ''
+      this.keyword = ''
     },
     cancel () {
-      this.w = ''
+      this.keyword = ''
       this.visible = false
     },
     del (value) {
@@ -70,7 +70,7 @@ export default {
       window.localStorage['vue-demo-search'] = this.records.join(',')
     },
     clearAll () {
-      delete window.localStorage['vue-demo-search']
+      window.localStorage.removeItem('vue-demo-search')
       this.records = null
     }
   }

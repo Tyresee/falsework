@@ -12,7 +12,6 @@
 import { mapState, mapActions } from 'vuex'
 
 export default {
-  name: 'hello',
   data () {
     return {
       msg: 'Hello Vue.js App'
@@ -31,18 +30,24 @@ export default {
       if (!uid) {
         this.$$cookie.set('uid', 'zhouyu')
       } else {
-        alert(uid)
+        this.$$toast(uid)
       }
     }
   },
   created () {
-    this.getCms()
+    try {
+      this.getCms()
+    } catch (e) {
+      this.$$toast('系统异常')
+    }
   }
 }
 </script>
 
 <style lang="scss" scoped>
 .hello {
+  text-align: center;
+
   h1 {
     font-size: 30px;
     color: #121212;
@@ -50,7 +55,7 @@ export default {
 
   span {
     font-size: 26px;
-    color: #ff0000;
+    color: #f00;
   }
 
   img {
@@ -64,8 +69,8 @@ export default {
     margin: 10px auto;
     font-size: 26px;
     color: #fff;
-    border: 0;
     background-color: #00baf7;
+    border: 0;
   }
 }
 </style>

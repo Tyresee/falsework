@@ -1,15 +1,5 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
-# dependencies
-node_modules
-
-# testing
-test/unit/coverage
-test/e2e/reports
-
-# production
-/build
-
 # misc
 .DS_Store
 .env.local
@@ -17,7 +7,7 @@ test/e2e/reports
 .env.test.local
 .env.production.local
 
-# Editor directories and files
+# editor directories and files
 .idea
 *.suo
 *.ntvs*
