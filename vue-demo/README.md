@@ -2,13 +2,28 @@
 
 > A Vue.js project
 
+## Pri
+
+在你的浏览器上安装[vue devtools](https://github.com/vuejs/vue-devtools)
+
+``` bash
+# install yarn and vue-cli
+npm install -g yarn vue-cli
+
+# use vue-cli init project
+vue init webpack vue-demo
+
+# cd project
+cd vue-demo
+```
+
 ## Build Setup
 
 ``` bash
 # install dependencies
 yarn
 
-# serve with hot reload at localhost:8080
+# serve with hot reload at development
 yarn dev
 
 # build for production with minification
@@ -21,35 +36,31 @@ yarn build --report
 yarn test
 ```
 
-## Learn More
-
-* [vuejs-templates and webpack](http://vuejs-templates.github.io/webpack/)
-* [docs for vue](https://cn.vuejs.org/)
-* [docs for vue-loader](https://vue-loader.vuejs.org/zh-cn/)
-* [docs for vue-router](https://router.vuejs.org/zh-cn/)
-* [docs for vuex](https://vuex.vuejs.org/zh-cn/)
-
-# How to Build
-
-## vue 全家桶
+## Babel 环境、Sass 环境
 
 ``` bash
-npm install -g vue-cli
+# use babel-polyfill to polyfill es6
+yarn add babel-polyfill
 
-vue init webpack [vue-demo]
+# if your don't install vue-router when you inited, you should use install it.
+yarn add vue-router
 
-cd [vue-demo] & yarn
+# use vuex
+yarn add vuex
 
+# sass
 yarn add -D node-sass sass-loader
 
-yarn add babel-polyfill vuex isomorphic-fetch query-string js-cookie
+# use fetch
+yarn add isomorphic-fetch fetch-jsonp query-string
 
-yarn start
+# use some dependencies like js-cookie
+yarn add js-cookie
 ```
 
 ### babel-polyfill 配置
 
-build/webpack.base.conf.js
+打开 build/webpack.base.conf.js
 
 ``` javascript
 module.exports = {
@@ -57,8 +68,11 @@ module.exports = {
     app: './src/main.js'
   }
 }
+```
 
-// 改为
+改为：
+
+``` javascript
 module.exports = {
   entry: {
     app: ['babel-polyfill', './src/main.js']
@@ -118,16 +132,7 @@ export default new Router({
       }
     },
     {
-      path: '/home',
-      name: 'home',
-      component (resolve) {
-        require.ensure([], () => {
-          resolve(require('./home'))
-        })
-      }
-    },
-    {
-      path: '/todo/',
+      path: '/todo',
       name: 'todo',
       component (resolve) {
         require.ensure([], () => {
@@ -146,8 +151,7 @@ import router from './router'
 
 new Vue({
   el: '#app',
-  router, // 使用
-  store,
+  router,
   template: '<App/>',
   components: { App }
 })
@@ -173,8 +177,7 @@ import store from './store'
 
 new Vue({
   el: '#app',
-  router,
-  store, // 使用
+  store,
   template: '<App/>',
   components: { App }
 })
@@ -185,13 +188,14 @@ new Vue({
 在 src/router/components/hello.vue 中示范
 
 ``` javascript
-import { mapState, mapActions } from 'vuex'
+import { mapState, mapMutations, mapActions } from 'vuex'
 
 export default {
   computed: {
     ...mapState(['number'])
   },
   methods: {
+    ...mapMutations('setNumber'),
     ...mapActions(['updateNumber'])
   }
 }
@@ -199,37 +203,31 @@ export default {
 
 ### sass/scss 环境
 
+``` bash
 yarn add node-sass sass-loader
+```
 
-在 src/router/components/Hello.vue 中示范
+在 src/router/components/hello.vue 中示范
 
 ``` html
 <style lang="scss" scoped>
 .hello {
-  h1 {
-    font-size: 30px;
-    color: #121212;
-  }
+  text-align: center;
 
   span {
     font-size: 26px;
-    color: #ff0000;
+    color: #f00;
   }
 
-  button {
-    display: block;
-    padding: 10px 20px;
-    margin: 10px auto;
-    font-size: 26px;
-    color: #fff;
-    border: 0;
-    background-color: #00baf7;
+  img {
+    width: 200px;
+    height: 200px;
   }
 }
 </style>
 ```
 
-### isomorphic-fetch 使用
+### isomorphic-fetch 和 fetch-jsonp 的使用
 
 在 src/ 下新建 fetch 目录
 
@@ -377,7 +375,7 @@ module.exports = {
   ],
   // add your custom rules here
   'rules': {
-    'indent': ['error', 4],
+    'comma-dangle': 0,
     'no-new': 0
     // ...
   }
@@ -456,3 +454,13 @@ config/
 * 修改是否生成 .map; 建议生产环境不生成
 * 是否采取 Gzip; 建议采取
 * 开发环境第一次启动是否自动打开页面，设置打开页面的地址
+
+## Learn More
+
+* [vue devtools](https://github.com/vuejs/vue-devtools/)
+* [vue-cli](https://github.com/vuejs/vue-cli/)
+* [vuejs-templates and webpack](http://vuejs-templates.github.io/webpack/)
+* [docs for vue](https://cn.vuejs.org/)
+* [docs for vue-loader](https://vue-loader.vuejs.org/zh-cn/)
+* [docs for vue-router](https://router.vuejs.org/zh-cn/)
+* [docs for vuex](https://vuex.vuejs.org/zh-cn/)
