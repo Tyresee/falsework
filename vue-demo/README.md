@@ -2,7 +2,7 @@
 
 > A Vue.js project
 
-## Pri
+## Pre
 
 在你的浏览器上安装[vue devtools](https://github.com/vuejs/vue-devtools)
 
